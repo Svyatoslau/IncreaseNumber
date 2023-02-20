@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IncreaseNumberAPI.Models.Entities;
+namespace IncreaseNumberAPI.DAL.Entities;
 
 public partial class RecordNumber
 {

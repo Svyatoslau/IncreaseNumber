@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace IncreaseNumberAPI.Models.Entities;
+namespace IncreaseNumberAPI.DAL.Entities;
 
 public partial class NumberIncreaseContext : DbContext
 {
