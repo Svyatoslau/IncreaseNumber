@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using IncreaseNumberAPI.Models.API;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IncreaseNumberAPI.Controllers;
@@ -15,7 +16,7 @@ public class NumberController : ControllerBase
     [HttpPut("number/{id}")]
     public ActionResult IncreaseNumber(
         [FromRoute] int id,
-        [FromBody] int number
+        [FromBody] Increment model
         )
     {
         Console.WriteLine(id);
