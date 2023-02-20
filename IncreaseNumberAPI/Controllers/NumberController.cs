@@ -18,7 +18,7 @@ public class NumberController : ControllerBase
         [FromRoute] int id,
         [FromBody] Increment model
         )
-    {
+    {  
         Console.WriteLine(id);
         return Ok(id);
     }
