@@ -9,9 +9,10 @@ namespace IncreaseNumberAPI.Controllers;
 public class NumberController : ControllerBase
 {
     private readonly IBootstrap _bootstrap;
+    private readonly IIncrement _increment;
 
-    public NumberController(IBootstrap bootstrap) =>
-        (_bootstrap) = (bootstrap);
+    public NumberController(IBootstrap bootstrap, IIncrement increment) =>
+        (_bootstrap, _increment) = (bootstrap, increment);
 
     [HttpGet("number")]
     public async Task<ActionResult> GetNumbers()
@@ -27,12 +28,18 @@ public class NumberController : ControllerBase
     }
 
     [HttpPut("number/{id}")]
-    public ActionResult IncreaseNumber(
+    public async Task<ActionResult> IncreaseNumber(
         [FromRoute] int id,
         [FromBody] Increment model
         )
     {  
-        Console.WriteLine(id);
-        return Ok(id);
+        if (!ModelState.IsValid)
+            return BadRequest(new { message = "Model state is invalid", model = model });
+
+        var number = await _increment.Add(model, id);
+        if (number is null)
+            return NotFound(new { message = $"Number with id={id} not found" });
+
+        return Ok(number);
     }
 }

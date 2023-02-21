@@ -1,3 +1,10 @@
-﻿namespace IncreaseNumberAPI.Models.API;
+﻿using System.ComponentModel.DataAnnotations;
 
-public sealed record Increment(int count);
+namespace IncreaseNumberAPI.Models.API;
+
+public sealed record Increment(
+    [Required]
+    [Range(1, Int32.MaxValue)]
+    int count
+    );
+
