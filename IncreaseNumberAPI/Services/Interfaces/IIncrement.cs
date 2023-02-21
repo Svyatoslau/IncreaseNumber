@@ -5,5 +5,5 @@ namespace IncreaseNumberAPI.Services.Interfaces;
 
 public interface IIncrement
 {
-    public Task<NumberDTO> Add(Increment increment, int id);
+    public Task<NumberDto> Add(Increment increment, int id);
 }

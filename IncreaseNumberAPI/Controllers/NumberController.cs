@@ -20,10 +20,8 @@ public class NumberController : ControllerBase
         var numbers = await _bootstrap.Load();
 
         if (numbers is null)
-        {
-            return NotFound(new { message = "Files of bootstrap not found" }); 
-        }
-        
+            return NotFound(new { message = "Files of bootstrap not found" });
+
         return Ok(numbers);
     }
 

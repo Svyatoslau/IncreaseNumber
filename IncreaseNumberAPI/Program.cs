@@ -19,7 +19,8 @@ builder.Services
     .AddDbContext<NumberIncreaseContext>(option => option.UseSqlServer(connection))
     .AddScoped<INumberRepository, NumberRepository>()
     .AddSingleton<NumberMapper>()
-    .AddScoped<IBootstrap, BootstrapService>();
+    .AddScoped<IBootstrap, BootstrapService>()
+    .AddScoped<IIncrement, IncrementService>();
 
 
 var app = builder.Build();
