@@ -1,4 +1,5 @@
 ﻿using IncreaseNumberAPI.DAL.Entities;
+using IncreaseNumberAPI.DAL.Intefaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace IncreaseNumberAPI.DAL;
@@ -16,6 +17,9 @@ public class NumberRepository : INumberRepository
 
     public async Task<IEnumerable<RecordNumber>> GetNumbers() =>
         await _context.RecordNumbers.ToListAsync();
+
+    public async Task<IEnumerable<RecordNumber>> GetNumbers(int count) =>
+        await _context.RecordNumbers.Take(count).ToListAsync();
 
     public async Task Save() =>
         await _context.SaveChangesAsync();

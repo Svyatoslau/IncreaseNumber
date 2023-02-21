@@ -1,4 +1,6 @@
+using IncreaseNumberAPI.DAL;
 using IncreaseNumberAPI.DAL.Entities;
+using IncreaseNumberAPI.DAL.Intefaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +13,8 @@ string? connection = builder.Configuration
     .GetConnectionString("DefaultConnection");
 
 builder.Services
-    .AddDbContext<NumberIncreaseContext>(option => option.UseSqlServer(connection));
+    .AddDbContext<NumberIncreaseContext>(option => option.UseSqlServer(connection))
+    .AddSingleton<INumberRepository, NumberRepository>() ;
 
 
 var app = builder.Build();

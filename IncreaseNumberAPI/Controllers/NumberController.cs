@@ -10,6 +10,8 @@ public class NumberController : ControllerBase
     [HttpGet("number")]
     public ActionResult GetNumbers()
     {
+
+
         return Ok();
     }
 
