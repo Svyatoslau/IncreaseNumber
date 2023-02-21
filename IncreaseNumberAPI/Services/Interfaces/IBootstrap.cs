@@ -4,5 +4,5 @@ namespace IncreaseNumberAPI.Services.Interfaces;
 
 public interface IBootstrap
 {
-    public Task<IEnumerable<NumberDTO>> Bootsrap(int count);
+    public Task<IEnumerable<NumberDTO>> Load(int count = 2);
 }

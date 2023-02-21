@@ -1,4 +1,5 @@
 ﻿using IncreaseNumberAPI.Models.API;
+using IncreaseNumberAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,12 +8,22 @@ namespace IncreaseNumberAPI.Controllers;
 [ApiController]
 public class NumberController : ControllerBase
 {
+    private readonly IBootstrap _bootstrap;
+
+    public NumberController(IBootstrap bootstrap) =>
+        (_bootstrap) = (bootstrap);
+
     [HttpGet("number")]
     public ActionResult GetNumbers()
     {
+        var numbers = _bootstrap.Load();
 
+        if (numbers is null)
+        {
+            return NotFound(new { message = "Files of bootstrap not found" }); 
+        }
 
-        return Ok();
+        return Ok(numbers);
     }
 
     [HttpPut("number/{id}")]

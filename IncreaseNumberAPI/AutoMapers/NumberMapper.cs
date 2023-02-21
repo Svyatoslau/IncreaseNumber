@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using IncreaseNumberAPI.AutoMapers.Interfaces;
 using IncreaseNumberAPI.DAL.Entities;
 using IncreaseNumberAPI.Models.DTO;
 using System.Runtime.CompilerServices;

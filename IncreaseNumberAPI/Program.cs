@@ -1,8 +1,9 @@
 using IncreaseNumberAPI.AutoMapers;
-using IncreaseNumberAPI.AutoMapers.Interfaces;
 using IncreaseNumberAPI.DAL;
 using IncreaseNumberAPI.DAL.Entities;
 using IncreaseNumberAPI.DAL.Intefaces;
+using IncreaseNumberAPI.Services;
+using IncreaseNumberAPI.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,8 @@ string? connection = builder.Configuration
 builder.Services
     .AddDbContext<NumberIncreaseContext>(option => option.UseSqlServer(connection))
     .AddSingleton<INumberRepository, NumberRepository>()
-    .AddSingleton<NumberMapper>();
+    .AddSingleton<NumberMapper>()
+    .AddSingleton<IBootstrap, BootstrapService>();
 
 
 var app = builder.Build();
