@@ -14,15 +14,15 @@ public class NumberController : ControllerBase
         (_bootstrap) = (bootstrap);
 
     [HttpGet("number")]
-    public ActionResult GetNumbers()
+    public async Task<ActionResult> GetNumbers()
     {
-        var numbers = _bootstrap.Load();
+        var numbers = await _bootstrap.Load();
 
         if (numbers is null)
         {
             return NotFound(new { message = "Files of bootstrap not found" }); 
         }
-
+        
         return Ok(numbers);
     }
 

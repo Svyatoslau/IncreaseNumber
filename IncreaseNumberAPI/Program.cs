@@ -17,9 +17,9 @@ string? connection = builder.Configuration
 
 builder.Services
     .AddDbContext<NumberIncreaseContext>(option => option.UseSqlServer(connection))
-    .AddSingleton<INumberRepository, NumberRepository>()
+    .AddScoped<INumberRepository, NumberRepository>()
     .AddSingleton<NumberMapper>()
-    .AddSingleton<IBootstrap, BootstrapService>();
+    .AddScoped<IBootstrap, BootstrapService>();
 
 
 var app = builder.Build();
