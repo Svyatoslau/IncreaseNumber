@@ -1,0 +1,8 @@
+<ul class="numbers">
+  <app-number-detail
+    *ngFor="let num in numbers; let i = index"
+    [number]="num"
+    [increment]="i"
+  >
+  </app-number-detail>
+</ul>
