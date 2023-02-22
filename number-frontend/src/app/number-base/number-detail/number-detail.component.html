@@ -2,8 +2,8 @@
   <label for="number-button">ID:{{number.id}} value={{number.value}}</label>
   <button 
     type="button"
-    (click)="increase()"
+    (click)="increaseNumber(incr, number.id)"
   >
-  ++{{increment}}
+  ++{{incr}}
   </button>
 </li>
