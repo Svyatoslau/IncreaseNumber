@@ -1,6 +1,7 @@
 <li>
-  <label for="number-button">ID:{{number.id}} value={{number.value}}</label>
-  <button 
+  <label class="detail-label" for="number-button">ID:{{number.id}} value={{number.value}}</label>
+  <button
+    class="detail-button" 
     type="button"
     (click)="increaseNumber(incr, number.id)"
   >
