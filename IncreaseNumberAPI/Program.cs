@@ -12,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors();
+
 string? connection = builder.Configuration
     .GetConnectionString("DefaultConnection");
 
@@ -30,6 +32,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(builder => builder.WithOrigins("http://localhost:4200/")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod());
 
 app.UseHttpsRedirection();
 
