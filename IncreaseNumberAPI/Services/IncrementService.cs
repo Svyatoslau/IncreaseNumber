@@ -20,7 +20,7 @@ public class IncrementService : IIncrement
         if (number is null)
             return null;
 
-        number.Number += increment.count;
+        number.Number += increment.value;
         number.LastChange = DateTime.Now;
 
         _repository.UpdateNumber(number);

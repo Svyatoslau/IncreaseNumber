@@ -33,7 +33,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"count\": 2\r\n}",
+					"raw": "{\r\n    \"value\": 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -63,7 +63,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"count\": 2\r\n}",
+					"raw": "{\r\n    \"value\": 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -93,7 +93,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"count\": -10\r\n}",
+					"raw": "{\r\n    \"value\": -10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,7 +101,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:{{portNumber}}/api/number/1",
+					"raw": "https://localhost:{{portNumber}}/api/number/{{id}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -110,7 +110,7 @@
 					"path": [
 						"api",
 						"number",
-						"1"
+						"{{id}}"
 					]
 				}
 			},
