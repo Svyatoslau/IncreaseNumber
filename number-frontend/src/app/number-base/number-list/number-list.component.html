@@ -1,8 +1,8 @@
-<ul class="numbers">
+<ul class="numbers" *ngIf="numbers.length">
   <app-number-detail
-    *ngFor="let num in numbers; let i = index"
+    *ngFor="let num of numbers; let i = index"
     [number]="num"
-    [increment]="i"
+    [incr]="i"
   >
   </app-number-detail>
 </ul>
