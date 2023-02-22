@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http"
 import { catchError, Observable, of } from 'rxjs';
-import { INumber } from '../number-base/models/number';
+import { INumber } from '../number-base/models/inumber';
 import { Increment } from '../number-base/models/increment';
 
 @Injectable({

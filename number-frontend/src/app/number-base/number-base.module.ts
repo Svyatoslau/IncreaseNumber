@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { NumberListComponent } from './number-list/number-list.component';
 import { NumberDetailComponent } from './number-detail/number-detail.component';
 import { NumberService } from '../services/number.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   declarations: [
     NumberListComponent,
@@ -16,7 +18,7 @@ import { NumberService } from '../services/number.service';
   exports: [
     NumberListComponent,
     NumberDetailComponent
-  ]
+  ],
   providers: [
     NumberService
   ]

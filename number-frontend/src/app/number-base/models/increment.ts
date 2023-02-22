@@ -1,3 +1,3 @@
 export interface Increment {
-    value: number
+    value: number;
 }
