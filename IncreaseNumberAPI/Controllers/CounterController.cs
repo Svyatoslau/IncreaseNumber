@@ -28,9 +28,8 @@ public class CounterController : ControllerBase
     [HttpPut("counter/{id}")]
     public async Task<ActionResult> IncreaseNumber(
         [FromRoute] int id,
-        [FromBody] Increment model
-        )
-    {  
+        [FromBody] Increment model)
+    {
         if (!ModelState.IsValid)
             return BadRequest(new { message = "Model state is invalid", model = model });
 
