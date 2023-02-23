@@ -14,7 +14,7 @@ public class IncrementService : IIncrement
     public IncrementService(ICounterRepository repository, CounterMapper mapper) =>
         (_repository, _mapper) = (repository, mapper);
 
-    public async Task<CounterDto> Add(Increment increment, int id)
+    public async Task<CounterDto> AddAsync(Increment increment, int id)
     {
         var counter = await _repository.GetCounterByIdAsync(id);
         if (counter is null)

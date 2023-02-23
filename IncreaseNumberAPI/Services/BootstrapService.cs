@@ -14,7 +14,7 @@ public class BootstrapService : IBootstrap
     private readonly CounterMapper _mapper;
     public BootstrapService(ICounterRepository repository, CounterMapper mapper) =>
         (_repository, _mapper) = (repository, mapper);
-    public async Task<List<CounterDto>> Load(int count = 2)
+    public async Task<List<CounterDto>> LoadAsync(int count = 2)
     {
         var counters = await _repository.GetCountersAsync(count);
 

@@ -15,10 +15,9 @@ public class CounterController : ControllerBase
         (_bootstrap, _increment) = (bootstrap, increment);
 
     [HttpGet("counter")]
-    public async Task<ActionResult> GetNumbers()
+    public async Task<ActionResult> GetNumbersAsync()
     {
-        var numbers = await _bootstrap.Load();
-
+        var numbers = await _bootstrap.LoadAsync();
         if (numbers is null)
             return NotFound(new { message = "Files of bootstrap not found" });
 
@@ -26,14 +25,14 @@ public class CounterController : ControllerBase
     }
 
     [HttpPut("counter/{id}")]
-    public async Task<ActionResult> IncreaseNumber(
+    public async Task<ActionResult> IncreaseNumberAsync(
         [FromRoute] int id,
         [FromBody] Increment model)
     {
         if (!ModelState.IsValid)
             return BadRequest(new { message = "Model state is invalid", model = model });
 
-        var number = await _increment.Add(model, id);
+        var number = await _increment.AddAsync(model, id);
         if (number is null)
             return NotFound(new { message = $"Number with id={id} not found" });
 
