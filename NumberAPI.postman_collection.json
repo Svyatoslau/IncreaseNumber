@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:{{portNumber}}/api/number",
+					"raw": "https://localhost:{{portNumber}}/api/counter",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -20,7 +20,7 @@
 					"port": "{{portNumber}}",
 					"path": [
 						"api",
-						"number"
+						"counter"
 					]
 				}
 			},
@@ -41,7 +41,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:{{portNumber}}/api/number/{{id}}",
+					"raw": "https://localhost:{{portNumber}}/api/counter/{{id}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -49,7 +49,7 @@
 					"port": "{{portNumber}}",
 					"path": [
 						"api",
-						"number",
+						"counter",
 						"{{id}}"
 					]
 				}
@@ -71,7 +71,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:{{portNumber}}/api/number/10",
+					"raw": "https://localhost:{{portNumber}}/api/counter/10",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -79,7 +79,7 @@
 					"port": "{{portNumber}}",
 					"path": [
 						"api",
-						"number",
+						"counter",
 						"10"
 					]
 				}
@@ -101,7 +101,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:{{portNumber}}/api/number/{{id}}",
+					"raw": "https://localhost:{{portNumber}}/api/counter/{{id}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -109,7 +109,7 @@
 					"port": "{{portNumber}}",
 					"path": [
 						"api",
-						"number",
+						"counter",
 						"{{id}}"
 					]
 				}
