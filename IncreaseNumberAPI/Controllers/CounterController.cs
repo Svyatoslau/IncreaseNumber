@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 namespace IncreaseNumberAPI.Controllers;
 [Route("api")]
 [ApiController]
-public class NumberController : ControllerBase
+public class CounterController : ControllerBase
 {
     private readonly IBootstrap _bootstrap;
     private readonly IIncrement _increment;
 
-    public NumberController(IBootstrap bootstrap, IIncrement increment) =>
+    public CounterController(IBootstrap bootstrap, IIncrement increment) =>
         (_bootstrap, _increment) = (bootstrap, increment);
 
-    [HttpGet("number")]
+    [HttpGet("counter")]
     public async Task<ActionResult> GetNumbers()
     {
         var numbers = await _bootstrap.Load();
@@ -25,7 +25,7 @@ public class NumberController : ControllerBase
         return Ok(numbers);
     }
 
-    [HttpPut("number/{id}")]
+    [HttpPut("counter/{id}")]
     public async Task<ActionResult> IncreaseNumber(
         [FromRoute] int id,
         [FromBody] Increment model

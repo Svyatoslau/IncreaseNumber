@@ -8,26 +8,26 @@ namespace IncreaseNumberAPI.Services;
 
 public class IncrementService : IIncrement
 {
-    private readonly IUpdateNumber _repository;
-    private readonly NumberMapper _mapper;
+    private readonly ICounterUpdate _repository;
+    private readonly CounterMapper _mapper;
 
-    public IncrementService(INumberRepository repository, NumberMapper mapper) =>
+    public IncrementService(ICounterRepository repository, CounterMapper mapper) =>
         (_repository, _mapper) = (repository, mapper);
 
-    public async Task<NumberDto> Add(Increment increment, int id)
+    public async Task<CounterDto> Add(Increment increment, int id)
     {
-        var number = await _repository.GetNumberByIdAsync(id);
-        if (number is null)
+        var counter = await _repository.GetCounterByIdAsync(id);
+        if (counter is null)
             return null;
 
-        number.Value += increment.value;
-        number.LastChange = DateTime.Now;
+        counter.Value += increment.value;
+        counter.LastChange = DateTime.Now;
 
-        _repository.UpdateNumber(number);
+        _repository.UpdateCounter(counter);
         await _repository.SaveAsync();
 
-        var numberDto = _mapper.Map<NumberDto>(number);
+        var counterDto = _mapper.Map<CounterDto>(counter);
 
-        return numberDto;
+        return counterDto;
     }
 }

@@ -4,26 +4,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IncreaseNumberAPI.DAL;
 
-public class NumberRepository : INumberRepository
+public class CounterRepository : ICounterRepository
 {
     private readonly TestDbContext _context;
 
-    public NumberRepository(TestDbContext context) =>
+    public CounterRepository(TestDbContext context) =>
         _context = context;
 
-    public async Task<Counter> GetNumberByIdAsync(int numberId) =>
+    public async Task<Counter> GetCounterByIdAsync(int numberId) =>
         await _context.Counters.FirstOrDefaultAsync(num => num.Id == numberId);
    
 
-    public async Task<IEnumerable<Counter>> GetNumbersAsync() =>
+    public async Task<List<Counter>> GetCountersAsync() =>
         await _context.Counters.ToListAsync();
 
-    public async Task<IEnumerable<Counter>> GetNumbersAsync(int count) =>
+    public async Task<List<Counter>> GetCountersAsync(int count) =>
         await _context.Counters.Take(count).ToListAsync();
 
     public async Task SaveAsync() =>
         await _context.SaveChangesAsync();
 
-    public void UpdateNumber(Counter recordNumber) =>
+    public void UpdateCounter(Counter recordNumber) =>
         _context.Entry(recordNumber).State= EntityState.Modified;
 }
