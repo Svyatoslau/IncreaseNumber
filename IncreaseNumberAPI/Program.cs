@@ -18,7 +18,7 @@ string? connection = builder.Configuration
     .GetConnectionString("DefaultConnection");
 
 builder.Services
-    .AddDbContext<NumberIncreaseContext>(option => option.UseSqlServer(connection))
+    .AddDbContext<TestDbContext>(option => option.UseSqlServer(connection))
     .AddScoped<INumberRepository, NumberRepository>()
     .AddSingleton<NumberMapper>()
     .AddScoped<IBootstrap, BootstrapService>()

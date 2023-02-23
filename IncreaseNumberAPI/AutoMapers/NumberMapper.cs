@@ -8,9 +8,7 @@ namespace IncreaseNumberAPI.AutoMapers;
 public class NumberMapper : Mapper
 {
     private static MapperConfiguration configNumberDTO =
-        new MapperConfiguration(cfg => cfg.CreateMap<RecordNumber, NumberDto>()
-        .ForMember("Id", opt => opt.MapFrom(r => r.Id))
-        .ForMember("Value", opt => opt.MapFrom(r => r.Number)));
+        new MapperConfiguration(cfg => cfg.CreateMap<Counter, NumberDto>());
 
     public NumberMapper() : base(configNumberDTO) { }
 }

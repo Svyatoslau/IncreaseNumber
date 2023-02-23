@@ -4,7 +4,7 @@ namespace IncreaseNumberAPI.DAL.Intefaces;
 
 public interface IUpdateNumber
 {
-    public void UpdateNumber(RecordNumber recordNumber);
-    public Task<RecordNumber> GetNumberById(int numberId);
+    public void UpdateNumber(Counter recordNumber);
+    public Task<Counter> GetNumberById(int numberId);
     public Task Save();
 }
