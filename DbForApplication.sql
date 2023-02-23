@@ -14,3 +14,9 @@ CREATE TABLE [Counter]
 	LastChange DATETIME NOT NULL,
 	PickedDate DATE NULL
 )
+GO
+
+INSERT INTO [Counter] ([Value], [LastChange])
+VALUES
+(1, GETDATE()),
+(2, GETDATE());
