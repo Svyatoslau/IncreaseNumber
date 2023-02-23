@@ -1,10 +1,10 @@
 USE [master]
 GO
 
-CREATE DATABASE [testdb]
+CREATE DATABASE [TestDb]
 GO
 
-USE [testdb]
+USE [TestDb]
 GO
 
 CREATE TABLE [Counter]
