@@ -28,22 +28,4 @@ public class NumberRepository : INumberRepository
     {
         _context.Entry(recordNumber).State= EntityState.Modified;
     }
-
-    private bool disposed = false;
-    protected virtual void Dispose(bool disposing)
-    {
-        if (!this.disposed)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-        }
-        disposed = true;
-    }
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
 }

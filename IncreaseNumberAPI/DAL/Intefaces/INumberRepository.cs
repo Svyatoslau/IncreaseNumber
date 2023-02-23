@@ -2,7 +2,7 @@
 
 namespace IncreaseNumberAPI.DAL.Intefaces;
 
-public interface INumberRepository : IDisposable, INumberGetSliceData, IUpdateNumber
+public interface INumberRepository : INumberGetSliceData, IUpdateNumber
 {
     public Task<IEnumerable<RecordNumber>> GetNumbers();
     public void UpdateNumber(RecordNumber recordNumber);
