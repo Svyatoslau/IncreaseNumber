@@ -16,7 +16,7 @@ public class IncrementService : IIncrement
 
     public async Task<NumberDto> Add(Increment increment, int id)
     {
-        var number = await _repository.GetNumberById(id);
+        var number = await _repository.GetNumberByIdAsync(id);
         if (number is null)
             return null;
 
@@ -24,7 +24,7 @@ public class IncrementService : IIncrement
         number.LastChange = DateTime.Now;
 
         _repository.UpdateNumber(number);
-        await _repository.Save();
+        await _repository.SaveAsync();
 
         var numberDto = _mapper.Map<NumberDto>(number);
 

@@ -16,7 +16,7 @@ public class BootstrapService : IBootstrap
         (_repository, _mapper) = (repository, mapper);
     public async Task<IEnumerable<NumberDto>> Load(int count = 2)
     {
-        var numbers = await _repository.GetNumbers(count);
+        var numbers = await _repository.GetNumbersAsync(count);
 
         if (numbers.Count() < 1)
             return null;

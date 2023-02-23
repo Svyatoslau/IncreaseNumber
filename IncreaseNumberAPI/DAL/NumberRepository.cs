@@ -11,21 +11,19 @@ public class NumberRepository : INumberRepository
     public NumberRepository(TestDbContext context) =>
         _context = context;
 
-    public async Task<Counter> GetNumberById(int numberId) =>
+    public async Task<Counter> GetNumberByIdAsync(int numberId) =>
         await _context.Counters.FirstOrDefaultAsync(num => num.Id == numberId);
    
 
-    public async Task<IEnumerable<Counter>> GetNumbers() =>
+    public async Task<IEnumerable<Counter>> GetNumbersAsync() =>
         await _context.Counters.ToListAsync();
 
-    public async Task<IEnumerable<Counter>> GetNumbers(int count) =>
+    public async Task<IEnumerable<Counter>> GetNumbersAsync(int count) =>
         await _context.Counters.Take(count).ToListAsync();
 
-    public async Task Save() =>
+    public async Task SaveAsync() =>
         await _context.SaveChangesAsync();
 
-    public void UpdateNumber(Counter recordNumber)
-    {
+    public void UpdateNumber(Counter recordNumber) =>
         _context.Entry(recordNumber).State= EntityState.Modified;
-    }
 }
