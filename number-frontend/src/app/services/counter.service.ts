@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http"
 import { catchError, Observable, of } from 'rxjs';
-import { INumber } from '../number-base/models/inumber';
-import { Increment } from '../number-base/models/increment';
+import { ICounter } from '../counter-base/models/counter';
+import { Increment } from '../counter-base/models/increment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NumberService {
-  private numberUrl: string = "https://localhost:7135/api/number";
+export class CounterService {
+  private counterUrl: string = "https://localhost:7135/api/counter";
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -18,21 +18,21 @@ export class NumberService {
 
   constructor(private http: HttpClient) { }
   
-  getNumbers(): Observable<INumber[]> {
-    return this.http.get<INumber[]>(this.numberUrl)
+  getCounters(): Observable<ICounter[]> {
+    return this.http.get<ICounter[]>(this.counterUrl)
       .pipe(
-        catchError(this.handleError<INumber[]>("getNumbers"))
+        catchError(this.handleError<ICounter[]>("getNumbers"))
       );
   }
 
-  increaseNumber(id: number, increment: Increment): Observable<INumber> {
-    return this.http.put<INumber>(
-        `${this.numberUrl}/${id}`,
+  increaseCounter(id: number, increment: Increment): Observable<ICounter> {
+    return this.http.put<ICounter>(
+        `${this.counterUrl}/${id}`,
         increment,
         this.httpOptions
       )
       .pipe(
-        catchError(this.handleError<INumber>("incareaseNumber"))
+        catchError(this.handleError<ICounter>("incareaseCounter"))
       );
   }
 

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NumberBaseModule } from './number-base/number-base.module';
+import { CounterBaseModule } from './counter-base/counter-base.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { NumberBaseModule } from './number-base/number-base.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NumberBaseModule
+    CounterBaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
