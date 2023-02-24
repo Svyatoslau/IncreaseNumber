@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http"
 import { catchError, Observable, of } from 'rxjs';
 import { ICounter } from '../counter-base/models/counter';
 import { Increment } from '../counter-base/models/increment';
+import { Moment } from 'moment';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +20,14 @@ export class CounterService {
 
   constructor(private http: HttpClient) { }
   
-  getCounters(): Observable<ICounter[]> {
+  public getCounters(): Observable<ICounter[]> {
     return this.http.get<ICounter[]>(this.counterUrl)
       .pipe(
         catchError(this.handleError<ICounter[]>("getNumbers"))
       );
   }
 
-  increaseCounter(id: number, increment: Increment): Observable<ICounter> {
+  public increaseCounter(id: number, increment: Increment): Observable<ICounter> {
     return this.http.put<ICounter>(
         `${this.counterUrl}/${id}`,
         increment,
@@ -33,6 +35,19 @@ export class CounterService {
       )
       .pipe(
         catchError(this.handleError<ICounter>("incareaseCounter"))
+      );
+  }
+
+  public updatePikedDate(id: number, date: string): Observable<ICounter> {
+    let formatDate = moment(date).format("YYYY-MM-DD HH:mm:ss")
+
+    return this.http.patch<ICounter>(
+        `${this.counterUrl}/${id}`,
+        formatDate,
+        this.httpOptions
+      )
+      .pipe(
+        catchError(this.handleError<ICounter>("updatePikedDate"))
       );
   }
 
