@@ -24,8 +24,8 @@ builder.Services
     .AddScoped<ICounterRepository, CounterRepository>()
     .AddSingleton<CounterMapper>()
     .AddScoped<IBootstrap, BootstrapService>()
-    .AddScoped<IIncrement, IncrementService>();
-
+    .AddScoped<IIncrement, IncrementService>()
+    .AddScoped<IUpdatePikedDate, UpdateDateService>();
 
 var app = builder.Build();
 

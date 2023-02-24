@@ -10,18 +10,18 @@ public class CounterController : ControllerBase
 {
     private readonly IBootstrap _bootstrap;
     private readonly IIncrement _increment;
-
-    public CounterController(IBootstrap bootstrap, IIncrement increment) =>
-        (_bootstrap, _increment) = (bootstrap, increment);
+    private readonly IUpdatePikedDate _pikedDate;
+    public CounterController(IBootstrap bootstrap, IIncrement increment, IUpdatePikedDate pikedDate) =>
+        (_bootstrap, _increment, _pikedDate) = (bootstrap, increment, pikedDate);
 
     [HttpGet("counter")]
     public async Task<ActionResult> GetNumbersAsync()
     {
-        var numbers = await _bootstrap.LoadAsync();
-        if (numbers is null)
+        var counters = await _bootstrap.LoadAsync();
+        if (counters is null)
             return NotFound(new { message = "Files of bootstrap not found" });
 
-        return Ok(numbers);
+        return Ok(counters);
     }
 
     [HttpPut("counter/{id}")]
@@ -32,10 +32,23 @@ public class CounterController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(new { message = "Model state is invalid", model = model });
 
-        var number = await _increment.AddAsync(model, id);
-        if (number is null)
+        var counter = await _increment.AddAsync(model, id);
+        if (counter is null)
             return NotFound(new { message = $"Number with id={id} not found" });
 
-        return Ok(number);
+        return Ok(counter);
+    }
+
+    [HttpPatch("counter/{id}")]
+    public async Task<ActionResult> UpdatePikedDateAsync(
+        [FromRoute] int id,
+        [FromBody] DateTime model)
+    {
+        var counter = await _pikedDate.UpdatePikedDateAsync(id, model);
+
+        if (counter is null)
+            return NotFound(new { message = $"Number with id={id} not found" });
+
+        return Ok(counter);
     }
 }
