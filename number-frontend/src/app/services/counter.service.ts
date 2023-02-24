@@ -39,8 +39,7 @@ export class CounterService {
   }
 
   public updatePikedDate(id: number, date: string): Observable<ICounter> {
-    let formatDate = moment(date).format("YYYY-MM-DD HH:mm:ss")
-
+    let formatDate = moment(date).toDate();
     return this.http.patch<ICounter>(
         `${this.counterUrl}/${id}`,
         formatDate,
