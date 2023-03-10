@@ -14,16 +14,18 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors();
 
-string? connection = builder.Configuration
-    .GetConnectionString("DefaultConnection");
+var config = builder.Configuration;
+
+string? connection = config.GetConnectionString("DefaultConnection");
+string[] origins = config.GetSection("AllowedOrigins").Value.Split(";");
 
 builder.Services
-    .AddDbContext<NumberIncreaseContext>(option => option.UseSqlServer(connection))
-    .AddScoped<INumberRepository, NumberRepository>()
-    .AddSingleton<NumberMapper>()
+    .AddDbContext<TestDbContext>(option => option.UseSqlServer(connection))
+    .AddScoped<ICounterRepository, CounterRepository>()
+    .AddSingleton<CounterMapper>()
     .AddScoped<IBootstrap, BootstrapService>()
-    .AddScoped<IIncrement, IncrementService>();
-
+    .AddScoped<IIncrement, IncrementService>()
+    .AddScoped<IUpdatePikedDate, UpdateDateService>();
 
 var app = builder.Build();
 
@@ -33,7 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
+app.UseCors(builder => builder.WithOrigins(origins)
                             .AllowAnyHeader()
                             .AllowAnyMethod());
 
