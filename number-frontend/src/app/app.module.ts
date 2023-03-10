@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NumberBaseModule } from './number-base/number-base.module';
+import { CounterBaseModule } from './counter-base/counter-base.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { NumberBaseModule } from './number-base/number-base.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NumberBaseModule
+    CounterBaseModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

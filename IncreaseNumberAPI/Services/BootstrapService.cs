@@ -10,19 +10,19 @@ namespace IncreaseNumberAPI.Services;
 
 public class BootstrapService : IBootstrap
 {
-    private readonly INumberGetSliceData _repository;
-    private readonly NumberMapper _mapper;
-    public BootstrapService(INumberRepository repository, NumberMapper mapper) =>
+    private readonly ICounterGetSliceData _repository;
+    private readonly CounterMapper _mapper;
+    public BootstrapService(ICounterRepository repository, CounterMapper mapper) =>
         (_repository, _mapper) = (repository, mapper);
-    public async Task<IEnumerable<NumberDto>> Load(int count = 2)
+    public async Task<List<CounterDto>> LoadAsync(int count = 2)
     {
-        var numbers = await _repository.GetNumbers(count);
+        var counters = await _repository.GetCountersAsync(count);
 
-        if (numbers.Count() < 1)
+        if (counters.Count() < 1)
             return null;
 
-        var numbersDto = _mapper.Map<IEnumerable<NumberDto>>(numbers);
+        var countersDto = _mapper.Map<List<CounterDto>>(counters);
 
-        return numbersDto;
+        return countersDto;
     }
 }

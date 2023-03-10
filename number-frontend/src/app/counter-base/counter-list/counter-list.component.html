@@ -1,0 +1,8 @@
+<ul class="counters" *ngIf="counters.length">
+  <app-counter-detail
+    *ngFor="let counter of counters; let i = index"
+    [counter]="counter"
+    [incr]="i+1"
+  >
+  </app-counter-detail>
+</ul>

@@ -1,0 +1,13 @@
+<li>
+  <label class="detail-label" for="counter-button">ID:{{counter.id}} value={{counter.value}}</label>
+  <button
+    mat-button
+    color="primary"
+    class="detail-button" 
+    type="button"
+    (click)="increaseCounter(incr, counter.id)"
+  >
+  ++{{incr}}
+  </button>
+  <app-datetime-picker [id]="counter.id"></app-datetime-picker>
+</li>

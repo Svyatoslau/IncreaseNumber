@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NumberListComponent } from './number-base/number-list/number-list.component';
+import { CounterListComponent } from './counter-base/counter-list/counter-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'numbers', pathMatch: 'full'},
-  { path: 'numbers', component: NumberListComponent}
+  { path: 'numbers', component: CounterListComponent}
 ];
 
 @NgModule({
